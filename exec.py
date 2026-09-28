@@ -34,10 +34,16 @@ class Exec:
         self._sync()
 
     def _position(self, location):
+        """
+        Helper function for sync
+        """
         point = tuple(self.map.locations[location])
         return point if len(point) == 3 else (*point, 0)
 
     def _sync(self):
+        """
+        Store each position in the visualizer for later GUI updates
+        """
         self.robot_position = self._position(self.robot_location)
 
         def position(item):
@@ -57,6 +63,11 @@ class Exec:
                     and item not in self.portaled else None)
 
     def run(self):
+        """
+        This is the main task plan execution loop.
+
+        Given a task plan (self.plan), run through and execute each action in the plan.
+        """
         self.map.draw_locations()
         self.map.process_events(force=True)
         actions = self.plan.actions if self.plan is not None else ()
