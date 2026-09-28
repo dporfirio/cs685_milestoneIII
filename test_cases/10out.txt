@@ -1,0 +1,6 @@
+Plan:
+0: move_to(start, endportal)
+1: put_in_container(cake, cube, endportal)
+2: activate(endportal)
+3: grab(cube, endportal)
+4: put_in_portal(cube, endportal)
